@@ -63,10 +63,15 @@ float temperatures[4] = {0, 0, 0, 0};
 
 void notifyCallback(NimBLERemoteCharacteristic* characteristic, uint8_t* data, size_t length, bool isNotify) {
   Serial.print("Notification received: ");
-  for (size_t i = 0; i < length; i++) {
+  size_t i = 0;
+  for (i = 0; i < length; i++) {
     Serial.printf("%02X ", data[i]);
   }
   Serial.println();
+  //55 AA 00 0F A1 FF FF 00 FD FF FF FF FF FF FF FF FF FF FF AC
+  if (i < 19) {
+    return;
+  }
 
   for (int i = 0; i < 4; i++) {
     int highByte = data[5 + i * 2];

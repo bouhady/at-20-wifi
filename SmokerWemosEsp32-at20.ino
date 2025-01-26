@@ -169,10 +169,6 @@ void setup() {
   NimBLEDevice::setSecurityAuth(false, false, true);
 
   startScan();
-  //  NimBLEScan* pScan = NimBLEDevice::getScan();
-  //  pScan->setScanCallbacks(&scanCallbacks, false);
-  //  pScan->setActiveScan(true);
-  //  pScan->start(scanTimeMs, false);
 }
 
 int16_t counter = 0;
